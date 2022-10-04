@@ -6,8 +6,7 @@ owners
     Aardvark Platform Team
 projectUrl
     https://github.com/aardvark-community/aardvark.fontprovider
-repositoryUrl
-    https://github.com/aardvark-community/aardvark.fontprovider
+repositoryUrl https://github.com/aardvark-community/aardvark.fontprovider
 licenseUrl
     https://github.com/aardvark-community/aardvark.fontprovider/blob/master/LICENSE.txt
 requireLicenseAcceptance
