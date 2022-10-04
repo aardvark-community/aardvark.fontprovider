@@ -13,8 +13,19 @@ open System
 open Aardvark.Rendering.Text
 open System.Text.Json
 open System.Text.RegularExpressions 
-     
+  
+  
+
 module FontProviderHelper =
+    type private Marker = Marker
+    
+    do System.AppDomain.CurrentDomain.add_AssemblyResolve(ResolveEventHandler(fun _ arg ->
+        let file = AssemblyName(arg.Name).Name + ".dll"
+        let path = Path.Combine(Path.GetDirectoryName(typeof<Marker>.Assembly.Location), file)
+        Assembly.LoadFile path
+    ))
+    
+
     let tempDir =
         let dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FontProviderCache")
         if not (Directory.Exists dir) then Directory.CreateDirectory dir |> ignore
@@ -359,13 +370,7 @@ type GoogleFontsDatabase() =
 [<TypeProvider>]
 type FontProvider (config : TypeProviderConfig) as this =
     inherit TypeProviderForNamespaces (config, assemblyReplacementMap=[("Aardvark.FontProvider.DesignTime", "Aardvark.FontProvider.Runtime")])
-
-    static let tempDir =
-        let dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FontProviderCache")
-        if not (Directory.Exists dir) then Directory.CreateDirectory dir |> ignore
-        dir
-
-    let sha = System.Security.Cryptography.SHA1.Create()
+    
 
     let ns = "Aardvark.FontProvider"
     let asm = Assembly.GetExecutingAssembly()

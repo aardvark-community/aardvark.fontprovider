@@ -9,10 +9,8 @@ licenseUrl http://www.apache.org/licenses/LICENSE-2.0.txt
 description
     This library is for the .NET platform implementing FontProvider.
 files
-    ../../bin/Release/netstandard2.0/Aardvark.FontProvider.Runtime.* ==> lib/netstandard2.0
+    ../../bin/Release/netstandard2.0/Aardvark.FontProvider.* ==> lib/netstandard2.0
     ../../bin/Release/typeproviders/fsharp41/netstandard2.0/* ==> typeproviders/fsharp41/netstandard2.0
-    ../../bin/Release/net47/Aardvark.FontProvider.Runtime.* ==> lib/net47
-    ../../bin/Release/typeproviders/fsharp41/net47/* ==> typeproviders/fsharp41/net47
 references
     Aardvark.FontProvider.Runtime.dll
 dependencies

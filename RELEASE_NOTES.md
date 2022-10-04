@@ -1,3 +1,6 @@
+### 0.0.4
+* custom assemblyresolve
+
 ### 0.0.3
 * included net47 build
 
