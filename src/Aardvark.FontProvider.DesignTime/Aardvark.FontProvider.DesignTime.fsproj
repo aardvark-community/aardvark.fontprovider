@@ -6,7 +6,7 @@
     <!-- This allows the component to execute from 'bin' directory during build -->
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <DisableImplictiFSharpCoreReference>true</DisableImplictiFSharpCoreReference>
-    <OutputPath>..\..\bin\$(Configuration)\</OutputPath>
+    <OutputPath>..\..\bin\$(Configuration)\typeproviders\fsharp41\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="FontSquirrel.json" />
