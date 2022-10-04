@@ -1,3 +1,6 @@
+### 0.0.3
+* included net47 build
+
 ### 0.0.2
 * included dependencies in package
 
