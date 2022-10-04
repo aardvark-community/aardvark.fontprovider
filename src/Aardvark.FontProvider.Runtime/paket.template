@@ -1,0 +1,27 @@
+type file
+id Aardvark.FontProvider
+authors
+    Aardvark Platform Team
+owners
+    Aardvark Platform Team
+projectUrl
+    https://github.com/aardvark-community/aardvark.fontprovider
+licenseUrl
+    https://github.com/aardvark-community/aardvark.fontprovider/blob/master/LICENSE.txt
+requireLicenseAcceptance
+    false
+summary
+    This library is for the .NET platform implementing FontProvider.
+description
+    This library is for the .NET platform implementing FontProvider.
+tags
+    F# fsharp typeproviders FontProvider
+files
+    ../../bin/Release/netstandard2.0/Aardvark.FontProvider.Runtime.* ==> lib/netstandard2.0
+    ../../bin/Release/netstandard2.0/Aardvark.FontProvider.DesignTime.* ==> typeproviders/fsharp41/netstandard2.0
+references
+    Aardvark.FontProvider.Runtime.dll
+dependencies
+  FSharp.Core >= LOCKEDVERSION
+  Aardvark.Rendering.Text ~> LOCKEDVERSION
+  
