@@ -22,7 +22,11 @@ module FontProviderHelper =
     do System.AppDomain.CurrentDomain.add_AssemblyResolve(ResolveEventHandler(fun _ arg ->
         let file = AssemblyName(arg.Name).Name + ".dll"
         let path = Path.Combine(Path.GetDirectoryName(typeof<Marker>.Assembly.Location), file)
-        Assembly.LoadFile path
+        if File.Exists path then
+            try Assembly.LoadFile path
+            with _ -> null
+        else
+            null
     ))
     
 

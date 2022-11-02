@@ -1,3 +1,6 @@
+### 0.0.5
+* improved assembly resolve (proper error handling)
+
 ### 0.0.4
 * custom assemblyresolve
 
