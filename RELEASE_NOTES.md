@@ -1,3 +1,6 @@
+### 0.0.6
+* updated rendering packages
+
 ### 0.0.5
 * improved assembly resolve (proper error handling)
 
