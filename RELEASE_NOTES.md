@@ -1,3 +1,6 @@
+### 0.0.7
+* updated rendering packages to 5.4.7
+
 ### 0.0.6
 * updated rendering packages
 
