@@ -248,7 +248,8 @@ type FontSquirrelDatabase() =
                                 let n = Path.GetFileName(n).ToLower()
                                 n.Contains("bolditalic") || n.Contains("bold-italic") || 
                                 n.Contains("bold_italic") || n.Contains "italicbold" ||
-                                n.Contains "italic-bold" || n.Contains "italic_bold"
+                                n.Contains "italic-bold" || n.Contains "italic_bold" ||
+                                n.Contains "bold italic" || n.Contains "italic bold"
                             )
                         elif bold then
                             names |> Array.tryFind (fun n ->

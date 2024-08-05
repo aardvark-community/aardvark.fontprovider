@@ -10,6 +10,8 @@ module Fonts =
        
     type NotoSans900 = GoogleFontProvider<Family = "Noto Sans", Weight = 900>
     type InconsolataBold = GoogleFontProvider<"Inconsolata", Bold = true>
+
+    type CourierPrimeBoldItalic = FontSquirrelProvider<Family = "Courier Prime", Bold = true, Italic = true>
         
 
 [<EntryPoint>]
