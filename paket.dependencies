@@ -1,17 +1,23 @@
-source https://api.nuget.org/v3/index.json
+framework: auto-detect
+storage: none
 
-nuget FSharp.Core >= 5.0.0 lowest_matching: true
-nuget Aardvark.Rendering.Text ~> 5.4.7-prerelease0001
+source https://api.nuget.org/v3/index.json
+source D:\NuGet\packages-test
+
+nuget FSharp.Core               >= 8.0.0 lowest_matching: true
+nuget Aardvark.Base.Fonts       >= 5.3.0-prerelease0006 lowest_matching: true
 
 # These lines are used by Paket to get the latest version of the Type Provider SDK files
 github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypes.fsi
 github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypes.fs
 
 group Test
+    framework: auto-detect
+    storage: none
+
     source https://api.nuget.org/v3/index.json
 
-    nuget FSharp.Core >= 5.0.0 lowest_matching: true
-    nuget Aardvark.Rendering.Text ~> 5.4.7-prerelease0001
+    nuget FSharp.Core                   >= 8.0.0 lowest_matching: true
     nuget Microsoft.NET.Test.Sdk
     nuget Microsoft.NETCore.App
     nuget NUnit

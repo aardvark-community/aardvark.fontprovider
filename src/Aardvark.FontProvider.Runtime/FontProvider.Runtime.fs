@@ -1,8 +1,8 @@
 namespace Aardvark.FontProvider
 
 open System.IO
-open Aardvark.Rendering.Text
 open Aardvark.Base
+open Aardvark.Base.Fonts
 
 [<AbstractClass; Sealed>]
 type FontLoader private() =

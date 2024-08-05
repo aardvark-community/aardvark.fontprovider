@@ -10,7 +10,7 @@ open ProviderImplementation
 open ProviderImplementation.ProvidedTypes
 open System.Net.Http
 open System
-open Aardvark.Rendering.Text
+open Aardvark.Base.Fonts
 open System.Text.Json
 open System.Text.RegularExpressions 
   

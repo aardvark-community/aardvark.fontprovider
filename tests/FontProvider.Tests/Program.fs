@@ -1,6 +1,4 @@
 ﻿open Aardvark.FontProvider
-open Aardvark.Rendering.Text
-
 
 module Fonts = 
     type RobotoMonoViaUrl = FontProvider<"http://fonts.gstatic.com/s/robotomono/v22/L0xuDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vqPQ--5Ip2sSQ.ttf">

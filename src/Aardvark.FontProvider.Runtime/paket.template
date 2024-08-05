@@ -15,5 +15,5 @@ references
     Aardvark.FontProvider.Runtime.dll
 dependencies
   FSharp.Core >= LOCKEDVERSION
-  Aardvark.Rendering.Text ~> LOCKEDVERSION
+  Aardvark.Base.Fonts >= LOCKEDVERSION
   
