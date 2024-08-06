@@ -1,3 +1,7 @@
+### 0.1.0
+- Updated to NET 8 and Aardvark.Base 5.3
+- [FontSquirrel] Fixed bold italic styles for fonts with whitespace in file names
+
 ### 0.0.7
 * updated rendering packages to 5.4.7
 

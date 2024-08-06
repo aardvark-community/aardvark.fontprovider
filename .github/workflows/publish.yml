@@ -27,7 +27,7 @@ jobs:
       - name: Pack
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: dotnet aardpack --notag
+        run: dotnet aardpack FontProvider.sln --notag
       - name: Upload Packages
         uses: actions/upload-artifact@v4
         with:
