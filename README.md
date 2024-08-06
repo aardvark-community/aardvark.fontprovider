@@ -1,3 +1,7 @@
+# Aardvark.FontProvider
+
+[![NuGet](https://badgen.net/nuget/v/Aardvark.FontProvider)](https://www.nuget.org/packages/Aardvark.FontProvider/)
+[![NuGet](https://badgen.net/nuget/dt/Aardvark.FontProvider)](https://www.nuget.org/packages/Aardvark.FontProvider/)
 
 This is a simple F# type provider.  It has separate design-time and runtime assemblies.
 
