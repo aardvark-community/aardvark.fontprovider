@@ -1,5 +1,6 @@
 # Aardvark.FontProvider
 
+![Publish](https://github.com/aardvark-community/Aardvark.FontProvider/workflows/Publish/badge.svg)
 [![NuGet](https://badgen.net/nuget/v/Aardvark.FontProvider)](https://www.nuget.org/packages/Aardvark.FontProvider/)
 [![NuGet](https://badgen.net/nuget/dt/Aardvark.FontProvider)](https://www.nuget.org/packages/Aardvark.FontProvider/)
 
