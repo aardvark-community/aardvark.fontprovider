@@ -7,21 +7,16 @@
 Collection of type providers for retrieving and bundling custom fonts with an Aardvark application at compile time. Currently includes providers for [Font Squirrel](https://www.fontsquirrel.com/), [Google Fonts](https://fonts.google.com/), and loading any custom URL or file path.
 
 ## Basic Usage
-Define the fonts you want to use by using one of the providers
+Define the fonts you want to use by using one of the providers:
 ```fsharp
 module MyFonts =
 
-    module CourierPrime =
+    module internal Types =
+        type Alger            = FontProvider<PathOrUrl = @"C:\Windows\Fonts\ALGER.ttf">
+        type NotoSans900      = GoogleFontProvider<Family = "Noto Sans", Weight = 900>
+        type CourierPrimeBold = FontSquirrelProvider<Family = "Courier Prime", Bold = true, Italic = false>
 
-        module Types =
-            let [<Literal>] private family = "Courier Prime"
-            type Regular    = FontSquirrelProvider<Family = family, Bold = false, Italic = false>
-            type Bold       = FontSquirrelProvider<Family = family, Bold = true,  Italic = false>
-            type Italic     = FontSquirrelProvider<Family = family, Bold = false, Italic = true>
-            type BoldItalic = FontSquirrelProvider<Family = family, Bold = true,  Italic = true>
-
-        let Regular    = Types.Regular.Font
-        let Bold       = Types.Bold.Font
-        let Italic     = Types.Italic.Font
-        let BoldItalic = Types.BoldItalic.Font
+    let Alger            = Types.Alger.Font
+    let NotoSans900      = Types.NotoSans900.Font
+    let CourierPrimeBold = Types.CourierPrimeBold.Font
 ```
