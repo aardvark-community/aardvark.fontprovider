@@ -4,14 +4,24 @@
 [![NuGet](https://badgen.net/nuget/v/Aardvark.FontProvider)](https://www.nuget.org/packages/Aardvark.FontProvider/)
 [![NuGet](https://badgen.net/nuget/dt/Aardvark.FontProvider)](https://www.nuget.org/packages/Aardvark.FontProvider/)
 
-This is a simple F# type provider.  It has separate design-time and runtime assemblies.
+Collection of type providers for retrieving and bundling custom fonts with an Aardvark application at compile time. Currently includes providers for [Font Squirrel](https://www.fontsquirrel.com/), [Google Fonts](https://fonts.google.com/), and loading any custom URL or file path.
 
-Paket is used to acquire the type provider SDK and build the nuget package (you can remove this use of paket if you like)
+## Basic Usage
+Define the fonts you want to use by using one of the providers
+```fsharp
+module MyFonts =
 
-Building:
+    module CourierPrime =
 
-    dotnet tool restore
-    dotnet paket update
-    dotnet build -c release
+        module Types =
+            let [<Literal>] private family = "Courier Prime"
+            type Regular    = FontSquirrelProvider<Family = family, Bold = false, Italic = false>
+            type Bold       = FontSquirrelProvider<Family = family, Bold = true,  Italic = false>
+            type Italic     = FontSquirrelProvider<Family = family, Bold = false, Italic = true>
+            type BoldItalic = FontSquirrelProvider<Family = family, Bold = true,  Italic = true>
 
-    dotnet paket pack nuget --version 0.0.1
+        let Regular    = Types.Regular.Font
+        let Bold       = Types.Bold.Font
+        let Italic     = Types.Italic.Font
+        let BoldItalic = Types.BoldItalic.Font
+```
