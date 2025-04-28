@@ -19,6 +19,8 @@ open System.Text.RegularExpressions
 module FontProviderHelper =
     type private Marker = Marker
     
+    exception FontDownloadProblem of string * exn
+
     do System.AppDomain.CurrentDomain.add_AssemblyResolve(ResolveEventHandler(fun _ arg ->
         let file = AssemblyName(arg.Name).Name + ".dll"
         let path = Path.Combine(Path.GetDirectoryName(typeof<Marker>.Assembly.Location), file)
@@ -49,9 +51,13 @@ module FontProviderHelper =
                     let ttf = File.ReadAllBytes pathOrUrl
                     ttf
                 | _ ->
-                    use c = new HttpClient()
-                    let ttf = c.GetByteArrayAsync(pathOrUrl).Result
-                    ttf
+                    try
+                        use c = new HttpClient()
+                        let ttf = c.GetByteArrayAsync(pathOrUrl).Result
+                        ttf
+                    with e -> 
+                        let s = sprintf "tried to download '%s'" pathOrUrl
+                        FontDownloadProblem(s,e) |> raise
             
 
             let tmp = Path.GetTempFileName() + ".zip"
