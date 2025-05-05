@@ -4,3 +4,5 @@
 /.vs
 /.paket
 /paket-files
+.idea
+*.DotSettings.user

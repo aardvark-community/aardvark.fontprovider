@@ -5,6 +5,7 @@ source https://api.nuget.org/v3/index.json
 
 nuget FSharp.Core               >= 8.0.0 lowest_matching: true
 nuget Aardvark.Base.Fonts       >= 5.3.0 lowest_matching: true
+nuget System.Text.Json          >= 8.0.5 lowest_matching: true
 
 # These lines are used by Paket to get the latest version of the Type Provider SDK files
 github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypes.fsi

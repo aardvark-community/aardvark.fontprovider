@@ -1,3 +1,4 @@
 File:ProvidedTypes.fsi
 File:ProvidedTypes.fs
 Aardvark.Base.Fonts
+System.Text.Json
