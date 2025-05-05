@@ -45,6 +45,7 @@ module FontProviderHelper =
         if not uri.IsFile then
             try
                 use c = new HttpClient()
+                c.DefaultRequestHeaders.UserAgent.ParseAdd "AardvarkFontProvider/0.1"
                 let ttf = c.GetByteArrayAsync(uri).Result
                 ttf
             with e ->
