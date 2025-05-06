@@ -3,7 +3,9 @@ namespace Aardvark.FontProvider
 open System
 open System.Collections.Generic
 open System.IO
+open System.IO.Compression
 open System.Reflection
+open System.Threading
 open FSharp.Core.CompilerServices
 open ProviderImplementation.ProvidedTypes
 open System.Net.Http
@@ -41,6 +43,26 @@ module FontProviderHelper =
             let data = System.Text.Encoding.UTF8.GetBytes str
             sha.ComputeHash data |> Array.map (sprintf "%02X") |> String.concat ""
 
+    let lockFile (name: string) (action: unit -> 'T) =
+        let lockFile = Path.Combine(tempDir, $"{name}.lock")
+
+        let rec lock (n: int) =
+            try
+                new FileStream(lockFile, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None)
+            with _ ->
+                if n > 64 then failwith $"Cannot lock '{lockFile}'."
+                Thread.Sleep 200
+                lock (n + 1)
+
+        let stream = lock 0
+
+        try
+            action()
+        finally
+            stream.Close()
+            try File.Delete lockFile
+            with _ -> ()
+
     let readOrDownload (uri: Uri) =
         if not uri.IsFile then
             try
@@ -55,16 +77,18 @@ module FontProviderHelper =
 
     let extractZip (uri : Uri) =
         let hash = computeHash uri.AbsoluteUri
-        let cacheDir = Path.Combine(tempDir, $"zip_{hash}")
-        if not (Directory.Exists cacheDir) then
-            let binary = readOrDownload uri
-            let tmp = Path.GetTempFileName() + ".zip"
-            File.WriteAllBytes(tmp, binary)
 
-            Directory.CreateDirectory cacheDir |> ignore
-            System.IO.Compression.ZipFile.ExtractToDirectory(tmp, cacheDir)
-            ()
-        cacheDir
+        lockFile hash (fun _ ->
+            let cacheDir = Path.Combine(tempDir, $"zip_{hash}")
+
+            if not (Directory.Exists cacheDir) then
+                let binary = readOrDownload uri
+                use ms = new MemoryStream(binary)
+                use zip = new ZipArchive(ms, ZipArchiveMode.Read)
+                zip.ExtractToDirectory cacheDir
+
+            cacheDir
+        )
 
     let createType (ns : string) (typeName : string) (path : string) (zipEntry : option<string>) =
         if String.IsNullOrWhiteSpace path then failwithf "Path or URL cannot be null or empty."
@@ -85,12 +109,14 @@ module FontProviderHelper =
                 let file = Path.Combine(tempDir, hash)
 
                 let ttf =
-                    if File.Exists file then
-                        File.ReadAllBytes file
-                    else
-                        let ttf = readOrDownload uri
-                        File.WriteAllBytes(file, ttf)
-                        ttf
+                    lockFile hash (fun _ ->
+                        if File.Exists file then
+                            File.ReadAllBytes file
+                        else
+                            let ttf = readOrDownload uri
+                            File.WriteAllBytes(file, ttf)
+                            ttf
+                    )
 
                 hash, ttf
 
