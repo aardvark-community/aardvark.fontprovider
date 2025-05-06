@@ -1,3 +1,8 @@
+### 0.1.1
+- [FontSquirrel] Fixed issue with download (https://github.com/aardvark-community/aardvark.fontprovider/issues/1)
+- Improved error reporting and formatting
+- Improved robustness of concurrent file access
+
 ### 0.1.0
 - Updated to NET 8 and Aardvark.Base 5.3
 - [FontSquirrel] Fixed bold italic styles for fonts with whitespace in file names
