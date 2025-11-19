@@ -1,8 +1,8 @@
 # Aardvark.FontProvider
 
-![Publish](https://github.com/aardvark-community/Aardvark.FontProvider/workflows/Publish/badge.svg)
-[![NuGet](https://badgen.net/nuget/v/Aardvark.FontProvider)](https://www.nuget.org/packages/Aardvark.FontProvider/)
-[![NuGet](https://badgen.net/nuget/dt/Aardvark.FontProvider)](https://www.nuget.org/packages/Aardvark.FontProvider/)
+[![Publish](https://github.com/aardvark-community/Aardvark.FontProvider/actions/workflows/publish.yml/badge.svg)](https://github.com/aardvark-community/Aardvark.FontProvider/actions/workflows/publish.yml)
+[![Nuget](https://img.shields.io/nuget/vpre/Aardvark.FontProvider)](https://www.nuget.org/packages/Aardvark.FontProvider/)
+[![Downloads](https://img.shields.io/nuget/dt/Aardvark.FontProvider)](https://www.nuget.org/packages/Aardvark.FontProvider/)
 
 Collection of type providers for retrieving and bundling custom fonts with an Aardvark application at compile time. Currently includes providers for [Font Squirrel](https://www.fontsquirrel.com/), [Google Fonts](https://fonts.google.com/), and loading any custom URL or file path.
 
