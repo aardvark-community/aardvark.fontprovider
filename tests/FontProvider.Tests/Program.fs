@@ -5,13 +5,13 @@ module Fonts =
     type RobotoMono = GoogleFontProvider<"Roboto Mono">
     type RobotoMonoBoldItalic = GoogleFontProvider<Family = "Roboto Mono", Bold = true, Italic = true>
     
-    type AmitaBold = FontSquirrelProvider<Family = "Amita", Entry = "amita-bold.ttf">
-    type HackBoldItalic = FontSquirrelProvider<Family = "Hack", Italic = true, Bold = true>
+    // fontsquirrel.com filters requests with JS challenges...
+    //type AmitaBold = FontSquirrelProvider<Family = "Amita", Entry = "amita-bold.ttf">
+    //type HackBoldItalic = FontSquirrelProvider<Family = "Hack", Italic = true, Bold = true>
+    //type CourierPrimeBoldItalic = FontSquirrelProvider<Family = "Courier Prime", Bold = true, Italic = true>
        
     type NotoSans900 = GoogleFontProvider<Family = "Noto Sans", Weight = 900>
     type InconsolataBold = GoogleFontProvider<"Inconsolata", Bold = true>
-
-    type CourierPrimeBoldItalic = FontSquirrelProvider<Family = "Courier Prime", Bold = true, Italic = true>
         
 
 [<EntryPoint>]

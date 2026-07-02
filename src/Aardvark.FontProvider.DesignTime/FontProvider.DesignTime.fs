@@ -69,6 +69,7 @@ module FontProviderHelper =
                 use c = new HttpClient()
                 c.DefaultRequestHeaders.UserAgent.ParseAdd "AardvarkFontProvider/0.1"
                 let ttf = c.GetByteArrayAsync(uri).Result
+                if ttf.Length = 0 then failwith "Empty response"
                 ttf
             with e ->
                 failwith $"Could not fetch '{uri}': {e.GetBaseException().Message}"
@@ -83,9 +84,12 @@ module FontProviderHelper =
 
             if not (Directory.Exists cacheDir) then
                 let binary = readOrDownload uri
-                use ms = new MemoryStream(binary)
-                use zip = new ZipArchive(ms, ZipArchiveMode.Read)
-                zip.ExtractToDirectory cacheDir
+                try
+                    use ms = new MemoryStream(binary)
+                    use zip = new ZipArchive(ms, ZipArchiveMode.Read)
+                    zip.ExtractToDirectory cacheDir
+                with e ->
+                    failwith $"Could not extract archive retrieved from '{uri}': {e.Message}"
 
             cacheDir
         )
